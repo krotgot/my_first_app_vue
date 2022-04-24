@@ -23,12 +23,33 @@
             <li class="home__header-list-item">paid</li>
           </ul>
         </div>
-        <div class="home__header-button">
+        <div 
+        class="home__header-button"
+        @click="message"
+        >
           <div class="home__header-button-inner">
             <img src="@/assets/icon-plus.svg" />
           </div>
           <span>New Invoice</span>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="body container">
+    <div class="body__list">
+      <div class="body__list-items">
+        <div>№98E285</div>
+        <div>Nov 29, 2021</div>
+        <div>Sergey Tverezovskii</div>
+        <div>
+          <b>$47</b>
+          </div>
+          <div class="body__list-button">
+            <button>Draft</button>
+          </div>
+        <div>
+          <img src="@/assets/icon-arrow-down.svg" />
+          </div>
       </div>
     </div>
   </div>
@@ -45,6 +66,9 @@
     methods: {
       toggleFilterMenu() {
         this.filterMenu = !this.filterMenu
+      },
+      message() {
+        console.log("когда мы начнем зарабатыват миллионы??");
       }
     }
   }
@@ -120,6 +144,26 @@
             width: 10px;
             height: 10px;
           }
+        }
+      }
+    }
+  }
+  .body{
+
+    &__list {
+      
+      &-items{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1e2139;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        height: 80px;
+        border-radius: 20px;
+        padding: 20px;
+
+        img {
+          transform: rotate(-90deg);
         }
       }
     }
