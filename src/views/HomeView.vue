@@ -7,26 +7,17 @@
         <div>There are 3 total Invoices</div>
       </div>
       <div class="home__header-controls">
-        <div 
-          class="home__header-filter"
-          @click="toggleFilterMenu"
-        >
+        <div class="home__header-filter" @click="toggleFilterMenu">
           <span>Filter by status</span>
           <img src="@/assets/icon-arrow-down.svg" />
-          <ul 
-            class="home__header-list"
-            v-show="filterMenu"
-          >
+          <ul class="home__header-list" v-show="filterMenu">
             <li class="home__header-list-item">all</li>
             <li class="home__header-list-item">draft</li>
             <li class="home__header-list-item">pending</li>
             <li class="home__header-list-item">paid</li>
           </ul>
         </div>
-        <div 
-        class="home__header-button"
-        @click="message"
-        >
+        <div class="home__header-button" @click="message">
           <div class="home__header-button-inner">
             <img src="@/assets/icon-plus.svg" />
           </div>
@@ -43,13 +34,41 @@
         <div>Sergey Tverezovskii</div>
         <div>
           <b>$47</b>
-          </div>
-          <div class="body__list-button">
-            <button>Draft</button>
-          </div>
+        </div>
+        <div class="body__list-button">
+          <button>Draft</button>
+        </div>
         <div>
           <img src="@/assets/icon-arrow-down.svg" />
-          </div>
+        </div>
+      </div>
+      <div class="body__list-items">
+        <div>№C2310B</div>
+        <div>Oct 30, 2021</div>
+        <div>Krelectro</div>
+        <div>
+          <b>$70</b>
+        </div>
+        <div class="body__list-button">
+          <button>Paid</button>
+        </div>
+        <div>
+          <img src="@/assets/icon-arrow-down.svg" />
+        </div>
+      </div>
+      <div class="body__list-items">
+        <div>№8FF75D</div>
+        <div>Oct 30, 2021</div>
+        <div>Yconsultant</div>
+        <div>
+          <b>$35</b>
+        </div>
+        <div class="body__list-button">
+          <button>Pending</button>
+        </div>
+        <div>
+          <img src="@/assets/icon-arrow-down.svg" />
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +77,7 @@
 <script>
   export default {
     name: 'HomeView',
-    data () {
+    data() {
       return {
         filterMenu: false
       }
@@ -86,7 +105,7 @@
         display: flex;
         align-items: center;
 
-        > * + * {
+        >*+* {
           margin-left: 16px;
         }
       }
@@ -96,12 +115,14 @@
         align-items: center;
         cursor: pointer;
         position: relative;
+
         img {
           width: 12px;
           height: 7px;
           margin-left: 16px;
         }
       }
+
       &-list {
         position: absolute;
         top: 50px;
@@ -148,11 +169,12 @@
       }
     }
   }
-  .body{
+
+  .body {
 
     &__list {
-      
-      &-items{
+
+      &-items {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -161,6 +183,7 @@
         height: 80px;
         border-radius: 20px;
         padding: 20px;
+        margin: 20px;
 
         img {
           transform: rotate(-90deg);
