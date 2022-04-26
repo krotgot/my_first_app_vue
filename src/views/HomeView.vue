@@ -35,9 +35,7 @@
         <div>
           <b>$47</b>
         </div>
-        <div class="body__list-button">
-          <button>Draft</button>
-        </div>
+        <div class="button__default button__default--draft">Draft</div>
         <div>
           <img src="@/assets/icon-arrow-down.svg" />
         </div>
@@ -49,9 +47,7 @@
         <div>
           <b>$70</b>
         </div>
-        <div class="body__list-button">
-          <button>Paid</button>
-        </div>
+        <div class="button__default button__default--paid">Paid</div>
         <div>
           <img src="@/assets/icon-arrow-down.svg" />
         </div>
@@ -63,9 +59,7 @@
         <div>
           <b>$35</b>
         </div>
-        <div class="body__list-button">
-          <button>Pending</button>
-        </div>
+        <div class="button__default button__default--pending">Pending</div>
         <div>
           <img src="@/assets/icon-arrow-down.svg" />
         </div>
@@ -187,8 +181,34 @@
 
         img {
           transform: rotate(-90deg);
+          cursor: pointer;
         }
       }
+  .button__default {
+        height: 60px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        opacity: .6;
+      
+      &--draft {
+              background-color: #c3adc6;
+              color: #b136c2;
+              
+            }
+
+      &--paid {
+              background-color: #e4a80e;
+              color: #7a5908;
+            }
+      &--pending {
+              background-color: #33c84b;
+              color: #10df32;
+            }
+     }
     }
-  }
+    }
+    
 </style>
