@@ -1,15 +1,17 @@
 <template>
     <div class="body__list-items">
         <div class="body__list-block body__list-block--left">
-            <div class="body__list-item">№98E285</div>
-            <div class="body__list-item">Nov 29, 2021</div>
-            <div class="body__list-item">Sergey Tverezovskii</div>
+            <div class="body__list-item">{{item.number}}</div>
+            <div class="body__list-item">{{item.date}}</div>
+            <div class="body__list-item">{{item.name}}</div>
         </div>
         <div class="body__list-block">
             <div>
-                <span class="typography_span">$47</span>
+                <span class="typography_span">{{item.check}}</span>
             </div>
-            <div class="button__default button__default--draft">Draft</div>
+            <div class="button__default"
+              :class="buildClass"
+            >{{status}}</div>
             <div>
                 <img src="@/assets/icon-arrow-down.svg" />
             </div>
@@ -19,6 +21,31 @@
 <script>
     export default {
         name: 'InvoiceItem',
+        props: {
+          item: Object,
+        },
+        data() {
+          return { 
+            status: "No status"
+          }
+        },
+        computed: {
+          buildClass() {
+            switch (this.item.status) {
+              case "Draft":
+                this.status = this.item.status
+                return "button__default--draft"
+              case "Pending":
+                this.status = this.item.status
+                return "button__default--pending"
+              case "Paid":
+                this.status = this.item.status
+                return "button__default--paid"
+              default: 
+                return ""
+            }   
+          }
+        }
     }
 </script>
 <style lang="scss" scoped>

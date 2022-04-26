@@ -28,7 +28,12 @@
   </div>
   <div class="body container">
     <div class="body__list">
-      <invoice-item></invoice-item>
+      <invoice-item
+        v-for="(i,index) in invoiceItems"
+        :key="index"
+        :item="i"
+
+      ></invoice-item>
     </div>
   </div>
 </template>
@@ -54,14 +59,14 @@ export default {
         },
         {
           number: '№98E285',
-          date: 'Nov 29, 2021',
+          date: 'Nov 29, 2020',
           name: 'Sergey Tverezovskii',
           check: '$47',
           status: 'Draft'
         },
         {
           number: '№98E285',
-          date: 'Nov 29, 2021',
+          date: 'Nov 29, 2022',
           name: 'Sergey',
           check: '$47',
           status: 'Paid'
@@ -71,6 +76,13 @@ export default {
           date: 'Nov 29, 2021',
           name: 'wefwefwefewfw',
           check: '$47'
+        },
+        {
+          number: '3456789',
+          date: 'Nov 29, 2021',
+          name: 'wefwefwefewfw',
+          check: '$47',
+          status: 'Pending'
         },
       ]
     }
