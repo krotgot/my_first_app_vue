@@ -14,6 +14,15 @@
   padding: 0;
   margin: 0;
 }
+.typography {
+  &_span {
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+body {
+  background-color: #141625;
+}
 .app{
   height: 100vh;
   background-color: #141625;

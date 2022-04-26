@@ -28,63 +28,62 @@
   </div>
   <div class="body container">
     <div class="body__list">
-      <div class="body__list-items">
-        <div>№98E285</div>
-        <div>Nov 29, 2021</div>
-        <div>Sergey Tverezovskii</div>
-        <div>
-          <b>$47</b>
-        </div>
-        <div class="button__default button__default--draft">Draft</div>
-        <div>
-          <img src="@/assets/icon-arrow-down.svg" />
-        </div>
-      </div>
-      <div class="body__list-items">
-        <div>№C2310B</div>
-        <div>Oct 30, 2021</div>
-        <div>Krelectro</div>
-        <div>
-          <b>$70</b>
-        </div>
-        <div class="button__default button__default--paid">Paid</div>
-        <div>
-          <img src="@/assets/icon-arrow-down.svg" />
-        </div>
-      </div>
-      <div class="body__list-items">
-        <div>№8FF75D</div>
-        <div>Oct 30, 2021</div>
-        <div>Yconsultant</div>
-        <div>
-          <b>$35</b>
-        </div>
-        <div class="button__default button__default--pending">Pending</div>
-        <div>
-          <img src="@/assets/icon-arrow-down.svg" />
-        </div>
-      </div>
+      <invoice-item></invoice-item>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'HomeView',
-    data() {
-      return {
-        filterMenu: false
-      }
+import InvoiceItem from '@/components/invoiceItem.vue'
+
+export default {
+  name: 'HomeView',
+  components: {
+    InvoiceItem
+  },
+  data() {
+    return {
+      filterMenu: false,
+      invoiceItems: [
+        {
+          number: '№98E285',
+          date: 'Nov 29, 2021',
+          name: 'Sergey Tvkii',
+          check: '$47',
+          status: 'Pending'
+        },
+        {
+          number: '№98E285',
+          date: 'Nov 29, 2021',
+          name: 'Sergey Tverezovskii',
+          check: '$47',
+          status: 'Draft'
+        },
+        {
+          number: '№98E285',
+          date: 'Nov 29, 2021',
+          name: 'Sergey',
+          check: '$47',
+          status: 'Paid'
+        },
+        {
+          number: '№98E285',
+          date: 'Nov 29, 2021',
+          name: 'wefwefwefewfw',
+          check: '$47'
+        },
+      ]
+    }
+  },
+  methods: {
+    toggleFilterMenu() {
+      this.filterMenu = !this.filterMenu
     },
-    methods: {
-      toggleFilterMenu() {
-        this.filterMenu = !this.filterMenu
-      },
-      message() {
-        console.log("когда мы начнем зарабатыват миллионы??");
-      }
+    message() {
+      console.log("когда мы начнем зарабатыват миллионы??");
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -144,6 +143,7 @@
         background-color: #7c5dfa;
         border-radius: 40px;
         padding: 8px 10px;
+        cursor: pointer;
 
         &-inner {
           display: flex;
@@ -153,7 +153,6 @@
           padding: 8px;
           margin-right: 8px;
           background-color: #fff;
-          cursor: pointer;
 
           img {
             width: 10px;
@@ -163,52 +162,4 @@
       }
     }
   }
-
-  .body {
-
-    &__list {
-
-      &-items {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #1e2139;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        height: 80px;
-        border-radius: 20px;
-        padding: 20px;
-        margin: 20px;
-
-        img {
-          transform: rotate(-90deg);
-          cursor: pointer;
-        }
-      }
-  .button__default {
-        height: 60px;
-        width: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        opacity: .6;
-      
-      &--draft {
-              background-color: #c3adc6;
-              color: #b136c2;
-              
-            }
-
-      &--paid {
-              background-color: #e4a80e;
-              color: #7a5908;
-            }
-      &--pending {
-              background-color: #33c84b;
-              color: #10df32;
-            }
-     }
-    }
-    }
-    
 </style>
