@@ -26,24 +26,31 @@
         },
         data() {
           return { 
-            status: "No status"
+            status: ""
           }
         },
         computed: {
           buildClass() {
-            switch (this.item.status) {
-              case "Draft":
-                this.status = this.item.status
-                return "button__default--draft"
-              case "Pending":
-                this.status = this.item.status
-                return "button__default--pending"
-              case "Paid":
-                this.status = this.item.status
-                return "button__default--paid"
-              default: 
-                return ""
-            }   
+            this.status = this.item.status ? this.item.status : "No status"
+            return `button__default--${this.item.status?.toLowerCase()}`
+
+            // 34-35 строка вместо всего этого!!!
+            // switch (this.item.status) {
+            //   case "Draft":
+            //     this.status = this.item.status
+            //     return "button__default--draft"
+            //   case "Pending":
+            //     this.status = this.item.status
+            //     return "button__default--pending"
+            //   case "Paid":
+            //     this.status = this.item.status
+            //     return "button__default--paid"
+            //   case "Cancelled":
+            //     this.status = this.item.status
+            //     return "button__default--cancelled"
+            //   default: 
+            //     return ""
+            // }   
           }
         }
     }
@@ -52,7 +59,7 @@
   .body {
 
     &__list {
-
+    
       &-items {
         display: flex;
         justify-content: space-between;
@@ -118,6 +125,10 @@
       &--pending {
         background-color: rgba(51, 214, 160, .1);
         color: #10df32;
+      }
+      &--cancelled {
+        background-color: rgba(43, 18, 206, 0.776);
+        color: #e6f911e4;
       }
      }
   }

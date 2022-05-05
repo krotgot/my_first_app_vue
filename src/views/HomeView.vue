@@ -82,7 +82,7 @@ export default {
           date: 'Nov 29, 2021',
           name: 'wefwefwefewfw',
           check: '$47',
-          status: 'Pending'
+          status: 'Cancelled'
         },
       ]
     }
@@ -130,8 +130,8 @@ export default {
 
       &-list {
         position: absolute;
-        top: 50px;
-        left: 0;
+        top: 25px;
+        left: 30px;
         list-style: none;
         width: 120px;
         background-color: #1e2139;
