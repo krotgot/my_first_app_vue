@@ -8,7 +8,11 @@
       </div>
       <div class="home__header-controls">
         <div class="home__header-filter" @click="toggleFilterMenu">
-          <span>Filter by status</span>
+           Filter by 
+            <div class="current-status__default"
+              :class="buildFilterClass"
+              > {{currentStatus}} </div> 
+          
           <img src="@/assets/icon-arrow-down.svg" />
           <ul class="home__header-list" v-show="filterMenu">
             <li
@@ -106,6 +110,10 @@ export default {
         }
       })
       return tmp
+    },
+    buildFilterClass() {
+      
+      return `current-status__default--${this.currentStatus}`
     }
   },
   methods: {
@@ -189,6 +197,28 @@ export default {
           }
         }
       }
+    }
+  }
+  .current-status__default {
+    margin: 10px;
+    border-radius: 5px;
+    
+    &--draft {
+        background-color: rgba(130, 8, 114, 0.4);
+        color: #c542d7;
+      }
+
+    &--paid {
+      background-color: rgba(193, 174, 28, 0.1);
+      color: #be8903;
+    }
+    &--pending {
+      background-color: rgba(51, 214, 160, .1);
+      color: #10df32;
+    }
+    &--cancelled {
+      background-color: rgba(43, 18, 206, 0.776);
+      color: #e6f911e4;
     }
   }
 </style>
