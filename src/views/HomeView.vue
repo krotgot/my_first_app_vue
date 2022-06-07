@@ -18,17 +18,13 @@
               class="home__header-list-item">{{ item }}</li>
           </ul>
         </div>
-        <div class="home__header-button">
+        <div class="home__header-button" @click="showModal">
           <div class="home__header-button-inner">
             <img src="@/assets/icon-plus.svg" />
           </div>
-          <span @click="showModal">New Invoice</span>
-
-          <modal-item 
-            v-show="isModalVisible"
-            @close="closeModal" 
-          />
+          <span>New Invoice</span>
         </div>
+        <modal-item v-show="isModalVisible" @close="closeModal" />
       </div>
     </div>
   </div>
@@ -52,8 +48,8 @@
       InvoiceItem,
       ModalItem
     },
-    
-      data() {
+
+    data() {
       return {
         currentStatus: 'all',
         filterMenu: false,
