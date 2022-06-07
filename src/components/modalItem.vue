@@ -1,29 +1,22 @@
 <template>
-  <transition name="modal">
-    <div class="modal__mask" >
-      <div class="modal__wrapper">
-        <div class="modal__container">
-          <div class="modal__header">
-              Header
-          </div>
-
-          <div class="modal__body">
-              Body
-          </div>
-
-          <div class="modal__footer">
-              Footer
-          </div>
-          <button @click="close"> ok </button>
-        </div>
+  <div class="modal" >
+    <div class="modal__wrapper">
+      <div class="modal__container">
+        <div class="close" @click="close">X</div>
+        <slot></slot>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'ModalItem',
+    data() {
+      return {
+        text: ''
+      }
+    },
     methods: {
       close() {
         this.$emit('close');
@@ -33,57 +26,41 @@
 </script>
 
 <style lang="scss" scoped>
+  .close {
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+  }
   .modal {
-
-    &__mask {
-      position: fixed;
-      z-index: 9998;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: table;
-      transition: opacity 1s ease;
-    }
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: opacity 1s ease;
 
     &__wrapper {
       display: table-cell;
       vertical-align: middle;
     }
 
-
     &__container {
+      position: relative;
       width: 1000px;
+      height: 80vh;
+      overflow-y: auto;
       margin: 0px auto;
       padding: 20px 30px;
-      background-color: #fff;
+      background-color: #141625;
       border-radius: 2px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
       transition: all 0.3s ease;
-    }
-
-    &__header {
-      margin: 20px 0;
-      color: black;
-    }
-
-    &__body {
-      margin: 20px 0;
-      color: black;
-    }
-
-    &__footer {
-      margin: 20px 0;
-      color: black;
-    }
-
-    &-enter {
-      opacity: 0;
-    }
-
-    &-leave-active {
-      opacity: 0;
+      color: #000;
     }
   }
 </style>
