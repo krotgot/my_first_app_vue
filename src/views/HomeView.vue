@@ -22,7 +22,7 @@
           </div>
           <span>New Invoice</span>
         </div>
-        <modal-item v-show="isModalVisible" @close="closeModal">
+        <modal-item v-if="isModalVisible" @close="closeModal">
           <add-invoice></add-invoice>
         </modal-item>
       </div>

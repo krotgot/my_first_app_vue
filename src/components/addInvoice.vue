@@ -93,12 +93,18 @@
                 </label>
             </div>
         </div>
+        
         <button @click="create">create invoice</button>
+        <button-item @klak="clickBtn"></button-item>
     </div>
 </template>
 <script>
+import buttonItem from './buttonItem.vue'
 export default {
     name: 'addInvoice',
+    components: {
+        buttonItem
+    },
     data() {
         return {
             addForm: {
@@ -122,6 +128,9 @@ export default {
     methods: {
         create() {
             localStorage.setItem('invoice-2', JSON.stringify(this.addForm))
+        },
+        clickBtn () {
+            console.log("я устал");
         }
     }
 }
