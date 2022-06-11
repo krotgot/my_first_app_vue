@@ -6,7 +6,7 @@
         <div class="button-item__draft">
             Save Draft
         </div>
-        <div class="button-item__create">
+        <div class="button-item__create" @click="create">
             Create invoice
         </div>
     </div>
@@ -24,6 +24,9 @@ export default {
     methods: {
         close () {
             this.$emit ("close")
+        },
+        create () {
+            this.$emit ("create")
         }
     },
 

@@ -132,9 +132,6 @@
       closeModal() {
         this.isModalVisible = false;
       },
-      clickBtn () {
-            console.log("я устал");
-        }
     }
   }
 </script>
