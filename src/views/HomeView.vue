@@ -22,8 +22,9 @@
           </div>
           <span>New Invoice</span>
         </div>
-        <modal-item v-if="isModalVisible" @close="closeModal">
+        <modal-item v-if="isModalVisible" >
           <add-invoice></add-invoice>
+          <button-item @close="closeModal"></button-item>
         </modal-item>
       </div>
     </div>
@@ -43,12 +44,14 @@
   import InvoiceItem from '@/components/invoiceItem.vue'
   import ModalItem from '@/components/modalItem.vue'
   import AddInvoice from '@/components/addInvoice.vue'
+  import ButtonItem from '@/components/buttonItem.vue'
   export default {
     name: 'HomeView',
     components: {
       InvoiceItem,
       ModalItem,
-      AddInvoice
+      AddInvoice,
+      ButtonItem
     },
 
     data() {
@@ -128,7 +131,10 @@
       },
       closeModal() {
         this.isModalVisible = false;
-      }
+      },
+      clickBtn () {
+            console.log("я устал");
+        }
     }
   }
 </script>

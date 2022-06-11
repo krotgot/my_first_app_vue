@@ -95,7 +95,7 @@
         </div>
         
         <button @click="create">create invoice</button>
-        <button-item @klak="clickBtn"></button-item>
+        
     </div>
 </template>
 <script>
@@ -129,9 +129,6 @@ export default {
         create() {
             localStorage.setItem('invoice-2', JSON.stringify(this.addForm))
         },
-        clickBtn () {
-            console.log("я устал");
-        }
     }
 }
 </script>

@@ -2,7 +2,6 @@
   <div class="modal" >
     <div class="modal__wrapper">
       <div class="modal__container">
-        <div class="close" @click="close">X</div>
         <slot></slot>
       </div>
     </div>
@@ -16,12 +15,7 @@
       return {
         text: ''
       }
-    },
-    methods: {
-      close() {
-        this.$emit('close');
-      },
-    },
+    }
   };
 </script>
 

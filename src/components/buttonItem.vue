@@ -1,6 +1,6 @@
 <template>
-    <div class="button-item" @click="klak">
-        <div class="button-item__cancel" >
+    <div class="button-item">
+        <div class="button-item__cancel" @click="close">
             Cancel
         </div>
         <div class="button-item__draft">
@@ -16,12 +16,14 @@
 export default {
     name: "button-item",
     props: {},
-    data () {
-        return {}
+    data() {
+        return {
+           
+        }
     },
     methods: {
-        klak () {
-            this.$emit ("klak")
+        close () {
+            this.$emit ("close")
         }
     },
 
