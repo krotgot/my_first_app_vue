@@ -93,17 +93,15 @@
                 </label>
             </div>
         </div>
-        
-        <button @click="create">create invoice</button>
-        
     </div>
 </template>
 <script>
-import buttonItem from './buttonItem.vue'
+import ButtonItem from './buttonItem.vue'
 export default {
     name: 'addInvoice',
     components: {
-        buttonItem
+        ButtonItem
+
     },
     data() {
         return {
@@ -126,8 +124,8 @@ export default {
         }
     },
     methods: {
-        create() {
-            localStorage.setItem('invoice-2', JSON.stringify(this.addForm))
+        createInvoice () {
+            localStorage.setItem('invoice-N', JSON.stringify(this.addForm))
         },
     }
 }

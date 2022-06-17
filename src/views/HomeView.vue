@@ -22,9 +22,22 @@
           </div>
           <span>New Invoice</span>
         </div>
-        <modal-item v-if="isModalVisible" >
+        <modal-item v-if="isModalVisible"> 
           <add-invoice></add-invoice>
-          <button-item @close="closeModal"></button-item>
+          <div class="button-item">
+            <button-item @click="closeModal"
+            >
+            </button-item>
+           
+            <button-item 
+            
+            >
+            </button-item>
+            <button-item 
+           
+            >
+            </button-item>
+          </div>
         </modal-item>
       </div>
     </div>
@@ -53,7 +66,6 @@
       AddInvoice,
       ButtonItem
     },
-
     data() {
       return {
         currentStatus: 'all',
@@ -132,11 +144,12 @@
       closeModal() {
         this.isModalVisible = false;
       },
-    }
+    },
   }
 </script>
 
 <style lang="scss" scoped>
+
   .home {
 
     //& = .home

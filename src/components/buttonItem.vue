@@ -1,53 +1,69 @@
 <template>
-    <div class="button-item">
-        <div class="button-item__cancel" @click="close">
-            Cancel
+        <div class="button-item"
+        :class="className"
+        >
         </div>
-        <div class="button-item__draft">
-            Save Draft
-        </div>
-        <div class="button-item__create" @click="create">
-            Create invoice
-        </div>
-    </div>
 </template>
 
 <script>
+
+
 export default {
     name: "button-item",
-    props: {},
+    props: {
+        cancel: {
+            type: String,
+            default: 'Cancel'
+            
+        },
+        draft: {
+            type: String,
+            default: 'Save Draft'
+        },
+        create: {
+            type: String,
+            default: 'Create invoice'
+        },
+        
+    },
     data() {
         return {
-           
+        }
+    },
+    computed: {
+        className() {
+            return {
+
+                'button-item__cancel' : this.cancel,
+                'button-item__draft' : this.draft,
+                'button-item__create' : this.create,
+            }
         }
     },
     methods: {
-        close () {
-            this.$emit ("close")
         },
-        create () {
-            this.$emit ("create")
-        }
-    },
-
-    computed: {}
-}
+    
+        
+    }
 </script>
 
 <style lang="scss">
 
-.button-item {
-    display: flex;
-    justify-content: space-around;
-    background-color: #141625;
-    color: white;
+    .button-item {
+        display: flex;
+        justify-content: space-between;
+        background-color: #57d513;
+        
 
     &__cancel {
         display: flex;
+        justify-content: center;
         align-items: center;
         background-color: #e60d0d;
         border-radius: 40px;
-        padding: 8px 10px;
+        color: black;
+        
+        width: 100px;
         cursor: pointer;
     }
     &__draft {
@@ -67,7 +83,5 @@ export default {
         padding: 8px 10px;
         cursor: pointer;
     }
-    
-}
-
+    }
 </style>
