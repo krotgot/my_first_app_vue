@@ -23,21 +23,8 @@
           <span>New Invoice</span>
         </div>
         <modal-item v-if="isModalVisible"> 
-          <add-invoice></add-invoice>
-          <div class="button-item">
-            <button-item @click="closeModal"
-            >
-            </button-item>
-           
-            <button-item 
-            
-            >
-            </button-item>
-            <button-item 
-           
-            >
-            </button-item>
-          </div>
+          <add-invoice @closeModal="isModalVisible = false"></add-invoice>
+          
         </modal-item>
       </div>
     </div>
@@ -141,9 +128,9 @@
       showModal() {
         this.isModalVisible = true;
       },
-      closeModal() {
-        this.isModalVisible = false;
-      },
+      // closeModal() {
+      //   this.isModalVisible = false;
+      // },
     },
   }
 </script>

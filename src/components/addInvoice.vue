@@ -71,7 +71,7 @@
             <div class="add-invoice__input add-invoice__input--half">
                 <label class="add-invoice__label">
                     <span>Invoice Date</span>
-                    <input type="text" v-model="addForm.date">
+                    <input type="text" v-model="addForm.date" readonly>
                 </label>
             </div>
             <div class="add-invoice__input add-invoice__input--half">
@@ -93,6 +93,22 @@
                 </label>
             </div>
         </div>
+        <div class="button-items">
+            <button-item 
+                @click="$emit('closeModal')"
+                theme="cancel"
+            > 
+                Cancel
+            </button-item>
+            <button-item> 
+                Save Draft
+            </button-item>
+            <button-item 
+                @click="createInvoice"
+                theme="create"
+            > Create Invoice
+            </button-item>
+          </div>
     </div>
 </template>
 <script>
@@ -116,7 +132,7 @@ export default {
                 toCity: '',
                 toZip: '',
                 toCountry: '',
-                date: '',
+                date: new Date(),
                 due: '',
                 terms: '',
                 description: ''
@@ -125,8 +141,18 @@ export default {
     },
     methods: {
         createInvoice () {
-            localStorage.setItem('invoice-N', JSON.stringify(this.addForm))
+            let tmp = JSON.parse(localStorage.getItem("invoices"))
+            tmp.push(this.addForm)
+            localStorage.setItem('invoices', JSON.stringify(tmp))
+            this.clearForm()
         },
+        clearForm() {
+            Object.keys(this.addForm).forEach(i => {
+                this.addForm[i] = ''
+            })
+            this.addForm.date = new Date()
+        }
+
     }
 }
 </script>

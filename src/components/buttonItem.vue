@@ -1,8 +1,9 @@
 <template>
-        <div class="button-item"
+    <div class="button-item"
         :class="className"
-        >
-        </div>
+    >
+        <slot></slot>
+    </div>
 </template>
 
 <script>
@@ -11,20 +12,10 @@
 export default {
     name: "button-item",
     props: {
-        cancel: {
+        theme: {
             type: String,
-            default: 'Cancel'
-            
-        },
-        draft: {
-            type: String,
-            default: 'Save Draft'
-        },
-        create: {
-            type: String,
-            default: 'Create invoice'
-        },
-        
+            default: "default"
+        }   
     },
     data() {
         return {
@@ -32,12 +23,7 @@ export default {
     },
     computed: {
         className() {
-            return {
-
-                'button-item__cancel' : this.cancel,
-                'button-item__draft' : this.draft,
-                'button-item__create' : this.create,
-            }
+            return `button-item__${this.theme}`
         }
     },
     methods: {
@@ -50,38 +36,23 @@ export default {
 <style lang="scss">
 
     .button-item {
-        display: flex;
-        justify-content: space-between;
-        background-color: #57d513;
         
-
-    &__cancel {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #e60d0d;
-        border-radius: 40px;
-        color: black;
-        
-        width: 100px;
-        cursor: pointer;
-    }
-    &__draft {
-        display: flex;
-        align-items: center;
-        background-color: gray;
         border-radius: 40px;
         padding: 8px 10px;
         cursor: pointer;
+
+    &__cancel {
+        background-color: #e60d0d;  
+    }
+    &__default {
+        background-color: gray;
     }
 
     &__create {
-        display: flex;
-        align-items: center;
         background-color: #7c5dfa;
-        border-radius: 40px;
-        padding: 8px 10px;
-        cursor: pointer;
     }
     }
 </style>
