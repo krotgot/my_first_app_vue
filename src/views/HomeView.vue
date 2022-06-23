@@ -9,7 +9,8 @@
       <div class="home__header-controls">
         <div class="home__header-filter" @click="toggleFilterMenu">
           Filter by
-          <div class="current-status__default" :class="`current-status__default--${currentStatus}`"> {{currentStatus}}</div>
+          <div class="current-status__default" :class="`current-status__default--${currentStatus}`"> {{currentStatus}}
+          </div>
           <img src="@/assets/icon-arrow-down.svg" />
           <ul class="home__header-list" v-show="filterMenu">
             <li v-for="(item, index) in statusList" :key="index" @click="changeStatus(item)"
@@ -22,9 +23,9 @@
           </div>
           <span>New Invoice</span>
         </div>
-        <modal-item v-if="isModalVisible"> 
+        <modal-item v-if="isModalVisible">
           <add-invoice @closeModal="isModalVisible = false"></add-invoice>
-          
+
         </modal-item>
       </div>
     </div>
@@ -136,7 +137,6 @@
 </script>
 
 <style lang="scss" scoped>
-
   .home {
 
     //& = .home

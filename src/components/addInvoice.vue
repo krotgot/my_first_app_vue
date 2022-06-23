@@ -94,126 +94,134 @@
             </div>
         </div>
         <div class="button-items">
-            <button-item 
-                @click="$emit('closeModal')"
-                theme="cancel"
-            > 
+            <button-item @click="$emit('closeModal')" theme="cancel">
                 Cancel
             </button-item>
-            <button-item> 
-                Save Draft
-            </button-item>
-            <button-item 
-                @click="createInvoice"
-                theme="create"
-            > Create Invoice
-            </button-item>
-          </div>
+            <div class="button-items__right">
+                <button-item>
+                    Save Draft
+                </button-item>
+                <button-item @click="createInvoice" theme="create"> Create Invoice
+                </button-item>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import ButtonItem from './buttonItem.vue'
-export default {
-    name: 'addInvoice',
-    components: {
-        ButtonItem
+    import ButtonItem from './buttonItem.vue'
+    export default {
+        name: 'addInvoice',
+        components: {
+            ButtonItem
 
-    },
-    data() {
-        return {
-            addForm: {
-                frStreet: '',
-                frCity: '',
-                frZip: '',
-                frCountry: '',
-                toName: '',
-                toEmail: '',
-                toStreet: '',
-                toCity: '',
-                toZip: '',
-                toCountry: '',
-                date: new Date(),
-                due: '',
-                terms: '',
-                description: ''
-            }
-        }
-    },
-    methods: {
-        createInvoice () {
-            let tmp = JSON.parse(localStorage.getItem("invoices"))
-            tmp.push(this.addForm)
-            localStorage.setItem('invoices', JSON.stringify(tmp))
-            this.clearForm()
         },
-        clearForm() {
-            Object.keys(this.addForm).forEach(i => {
-                this.addForm[i] = ''
-            })
-            this.addForm.date = new Date()
+        data() {
+            return {
+                addForm: {
+                    frStreet: '',
+                    frCity: '',
+                    frZip: '',
+                    frCountry: '',
+                    toName: '',
+                    toEmail: '',
+                    toStreet: '',
+                    toCity: '',
+                    toZip: '',
+                    toCountry: '',
+                    date: new Date().toLocaleDateString("ru-RU"),
+                    due: '',
+                    terms: '',
+                    description: ''
+                }
+            }
+        },
+        methods: {
+            createInvoice() {
+                let tmp = JSON.parse(localStorage.getItem("invoices"))
+                tmp.push(this.addForm)
+                localStorage.setItem('invoices', JSON.stringify(tmp))
+                this.clearForm()
+                this.addForm.date = new Date().toLocaleDateString("ru-RU")
+            },
+            clearForm() {
+                Object.keys(this.addForm).forEach(i => {
+                    this.addForm[i] = ''
+                })
+            }
+        },
+        created() {
         }
 
     }
-}
 </script>
 <style lang="scss">
-.add-invoice {
-    h2 {
-        margin-bottom: 48px;
-    }
-
-    &__block {
+    .button-items {
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
 
-        &+& {
-            margin-top: 40px;
-        }
-
-        &-header {
-            width: 100%;
-            color: #7c5dfa;
-            font-size: 12px;
-            margin-bottom: 24px;
+        &__right {
+            display: flex;
+            justify-content: space-around;
         }
     }
 
-    &__input {
-        width: 100%;
-        margin-bottom: 16px;
-
-        &--twitter {
-            width: 30%;
+    .add-invoice {
+        h2 {
+            margin-bottom: 48px;
         }
 
-        &--half {
-            width: 48%;
+        &__block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            &+& {
+                margin-top: 40px;
+            }
+
+            &-header {
+                width: 100%;
+                color: #7c5dfa;
+                font-size: 12px;
+                margin-bottom: 24px;
+            }
         }
-    }
 
-    &__label {
-        display: flex;
-        flex-direction: column;
-
-        span {
-            font-size: 12px;
-            margin-bottom: 6px;
-        }
-
-        input {
+        &__input {
             width: 100%;
-            color: #fff;
-            background-color: #1e2139;
-            border: none;
-            border-radius: 4px;
-            padding: 12px 4px;
+            margin-bottom: 16px;
 
-            &:focus,
-            &:focus-visible {
-                outline: none;
+            &--twitter {
+                width: 30%;
+            }
+
+            &--half {
+                width: 48%;
+            }
+        }
+
+        &__label {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            input {
+                width: 100%;
+                color: #fff;
+                background-color: #1e2139;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 4px;
+
+                &:focus,
+                &:focus-visible {
+                    outline: none;
+                }
             }
         }
     }
-}
 </style>

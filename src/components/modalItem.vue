@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" >
+  <div class="modal">
     <div class="modal__wrapper">
       <div class="modal__container">
         <slot></slot>
@@ -27,6 +27,7 @@
     top: 10px;
     cursor: pointer;
   }
+
   .modal {
     position: fixed;
     z-index: 9998;
