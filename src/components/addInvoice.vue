@@ -93,6 +93,10 @@
                 </label>
             </div>
         </div>
+        <div class="add-invoice__block">
+            <h3>Item List</h3>
+            <items-list></items-list>
+        </div>
         <div class="button-items">
             <button-item @click="$emit('closeModal')" theme="cancel">
                 Cancel
@@ -109,11 +113,12 @@
 </template>
 <script>
     import ButtonItem from './buttonItem.vue'
+    import ItemsList from './itemsList/itemsList.vue'
     export default {
         name: 'addInvoice',
         components: {
-            ButtonItem
-
+            ButtonItem,
+            ItemsList
         },
         data() {
             return {
