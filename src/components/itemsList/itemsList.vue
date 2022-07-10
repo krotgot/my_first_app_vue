@@ -7,24 +7,59 @@
                 <th class="price">Price</th>
                 <th class="total">Total</th>
             </tr>
-            <list-row></list-row>
+            <tr class="items-list__table-row"
+                v-for="(item, index) in itemsList"
+                :key="index"
+            >
+                <td class="name">
+                    <input type="text" v-model="item.name">
+                </td>
+                <td class="qty">
+                    <input type="text" v-model="item.qty">
+                </td>
+                <td class="price">
+                    <input type="text" v-model="item.price">
+                </td>
+                <td class="total">
+                    {{item.total = item.qty * item.price}} rub.
+                </td>
+                <div class="items-list__button--delete"
+                @click="deleteItem"
+                >
+                    &#128123;
+                </div>
+            </tr>
         </table>
 
-        <div class="items-list__button">
+        <div class="items-list__button"
+            @click="addNewItem"
+        >
             <img src="@/assets/icon-plus.svg" />
             Add New Item
         </div>
     </div>
 </template>
 <script>
-import ListRow from './listRow.vue'
+
 export default {
     name: 'itemList',
-    components: {
-        ListRow
-    },
     data() {
         return  {
+            itemsList: [],
+
+        }
+    },
+    methods: {
+        addNewItem() {
+            this.itemsList.push({
+                name: "",
+                qty: "",
+                price: "",
+                total: ""
+            })
+        },
+        deleteItem(index) {
+            this.itemsList.splice(index, 1)
         }
     }
 }
@@ -40,6 +75,27 @@ export default {
         &-row {
             display: flex;
             gap: 16px;
+            margin: 15px 0;
+
+            td {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                input {
+                
+                    width: 100%;
+                    color: #fff;
+                    background-color: #1e2139;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 12px 4px;
+
+                    &:focus,
+                    &:focus-visible {
+                        outline: none;
+                    }
+                }
+            }
 
             th,td {
                 text-align: left;
@@ -67,6 +123,10 @@ export default {
         margin: 16px 0;
         padding: 18px;
         text-align: center;
+
+        &--delete {
+            cursor: pointer;
+        }
     }
 }
 </style>
