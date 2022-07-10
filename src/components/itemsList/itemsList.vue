@@ -21,12 +21,12 @@
                     <input type="text" v-model="item.price">
                 </td>
                 <td class="total">
-                    {{item.total = item.qty * item.price}} rub.
+                    {{item.total = item.qty * item.price}} &#8381;
                 </td>
                 <div class="items-list__button--delete"
                 @click="deleteItem"
                 >
-                    &#128123;
+                    &#10006;
                 </div>
             </tr>
         </table>
@@ -126,6 +126,8 @@ export default {
 
         &--delete {
             cursor: pointer;
+            display: flex;
+            align-items: center;
         }
     }
 }
