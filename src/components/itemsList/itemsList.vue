@@ -46,9 +46,9 @@ export default {
     data() {
         return  {
             itemsList: [],
-
         }
     },
+    
     methods: {
         addNewItem() {
             this.itemsList.push({
@@ -57,10 +57,12 @@ export default {
                 price: "",
                 total: ""
             })
+        this.$emit('addNewItem', this.itemsList)
         },
         deleteItem(index) {
             this.itemsList.splice(index, 1)
-        }
+            this.$emit('addNewItem', this.itemsList)
+        },
     }
 }
 </script>

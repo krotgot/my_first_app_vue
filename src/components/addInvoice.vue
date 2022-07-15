@@ -95,7 +95,9 @@
         </div>
         <div class="add-invoice__block">
             <h3>Item List</h3>
-            <items-list></items-list>
+            <items-list
+            @addNewItem="addItem"
+            ></items-list>
         </div>
         <div class="button-items">
             <button-item @click="$emit('closeModal')" theme="cancel">
@@ -136,10 +138,13 @@
                     date: new Date().toLocaleDateString("ru-RU"),
                     due: '',
                     terms: '',
-                    description: ''
+                    description: '',
+                    itemsList: []
+                    
                 }
             }
         },
+        
         methods: {
             createInvoice() {
                 let tmp = JSON.parse(localStorage.getItem("invoices"))
@@ -147,11 +152,16 @@
                 localStorage.setItem('invoices', JSON.stringify(tmp))
                 this.clearForm()
                 this.addForm.date = new Date().toLocaleDateString("ru-RU")
+                
             },
             clearForm() {
                 Object.keys(this.addForm).forEach(i => {
                     this.addForm[i] = ''
+                    this.addForm.itemsList.split()
                 })
+            },
+            addItem(value) {
+                this.addForm.itemsList.push(value)
             }
         },
         created() {
