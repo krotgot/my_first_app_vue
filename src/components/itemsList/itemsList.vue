@@ -48,7 +48,11 @@ export default {
             itemsList: [],
         }
     },
-    
+    watch: {
+        deep: {
+            itemsList: [],
+        }        
+    },
     methods: {
         addNewItem() {
             this.itemsList.push({
