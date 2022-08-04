@@ -49,9 +49,12 @@ export default {
         }
     },
     watch: {
-        deep: {
-            itemsList: [],
-        }        
+        itemsList: {
+            deep: true,
+            handler() {
+                this.$emit('addNewItem', this.itemsList)
+            }
+        }
     },
     methods: {
         addNewItem() {
@@ -61,12 +64,13 @@ export default {
                 price: "",
                 total: ""
             })
-        this.$emit('addNewItem', this.itemsList)
         },
         deleteItem(index) {
             this.itemsList.splice(index, 1)
-            this.$emit('addNewItem', this.itemsList)
         },
+        clearItem() {
+            this.itemsList = []
+        }
     }
 }
 </script>

@@ -1,14 +1,17 @@
 <template>
+
     <div class="add-invoice">
         <h2>New Invoice</h2>
         <div class="add-invoice__block">
             <div class="add-invoice__block-header">Bill From</div>
+            <form-validation>
             <div class="add-invoice__input">
                 <label class="add-invoice__label">
                     <span>Street Address</span>
-                    <input type="text" v-model="addForm.frStreet">
+                    <input type="text" v-model="addForm.frStreet" @change="isValid">
                 </label>
             </div>
+            </form-validation>
             <div class="add-invoice__input add-invoice__input--twitter">
                 <label class="add-invoice__label">
                     <span>City</span>
@@ -30,12 +33,14 @@
         </div>
         <div class="add-invoice__block">
             <div class="add-invoice__block-header">Bill To</div>
+            
             <div class="add-invoice__input">
                 <label class="add-invoice__label">
                     <span>Client's Name</span>
                     <input type="text" v-model="addForm.toName">
                 </label>
             </div>
+            
             <div class="add-invoice__input">
                 <label class="add-invoice__label">
                     <span>Client's Email</span>
@@ -96,7 +101,8 @@
         <div class="add-invoice__block">
             <h3>Item List</h3>
             <items-list
-            @addNewItem="addItem"
+                @addNewItem="addItem"
+                ref="itemsList"
             ></items-list>
         </div>
         <div class="button-items">
@@ -116,11 +122,14 @@
 <script>
     import ButtonItem from './buttonItem.vue'
     import ItemsList from './itemsList/itemsList.vue'
+    import FormValidation from './formValidation.vue'
     export default {
         name: 'addInvoice',
         components: {
             ButtonItem,
-            ItemsList
+            ItemsList,
+            FormValidation
+
         },
         data() {
             return {
@@ -147,22 +156,31 @@
         
         methods: {
             createInvoice() {
+                // let clientsNameValid = this.addForm.toName
+                // let formValid = clientsNameValid
+                // if (formValid) {
+
                 let tmp = JSON.parse(localStorage.getItem("invoices"))
                 tmp.push(this.addForm)
                 localStorage.setItem('invoices', JSON.stringify(tmp))
                 this.clearForm()
                 this.addForm.date = new Date().toLocaleDateString("ru-RU")
-                
+                // }
+                // else {
+                //     console.log("ERROR")
+                // // }
+
             },
             clearForm() {
                 Object.keys(this.addForm).forEach(i => {
                     this.addForm[i] = ''
-                    this.addForm.itemsList.split()
                 })
+                this.$refs.itemsList.clearItem()
             },
             addItem(value) {
-                this.addForm.itemsList.push(value)
-            }
+                this.addForm.itemsList = value
+            },
+            
         },
         created() {
         }
@@ -170,6 +188,9 @@
     }
 </script>
 <style lang="scss">
+    .active {
+        background: green
+    }
     .button-items {
         display: flex;
         justify-content: space-between;
